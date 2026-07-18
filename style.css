@@ -4,49 +4,45 @@ body {
     font-family: Arial, sans-serif;
 }
 
-
-
-
 /* Keeps title and menu on the same line */
 header {
     display: flex;
     align-items: center;
 }
 
-
 /* Moves menu to the right */
 nav {
     margin-left: auto;
 }
-
 
 .menu {
     position: relative;
     display: inline-block;
 }
 
-
 /* Menu button */
 .menu span {
+    display: inline-block;
     background-color: darkblue;
     color: lightblue;
     padding: 12px 20px;
     cursor: pointer;
     font-size: 18px;
     border-radius: 5px;
+    user-select: none;
 }
-
 
 /* Dropdown box */
 .dropdown {
     display: none;
     position: absolute;
     right: 0;
+    top: 100%;
     background-color: darkblue;
     min-width: 220px;
     border-radius: 5px;
+    z-index: 1000;
 }
-
 
 /* Dropdown links */
 .dropdown a {
@@ -56,26 +52,19 @@ nav {
     text-decoration: none;
 }
 
-
 /* Hover effect on links */
 .dropdown a:hover {
     background-color: blue;
 }
 
-
-/* Show menu when hovering */
-.menu:hover .dropdown {
+/* Show menu when clicked */
+.menu.open .dropdown {
     display: block;
 }
-
 
 h1 {
     margin: 0;
 }
-
-
-
-
 
 .photo-table {
     width: 80%;
@@ -96,9 +85,6 @@ h1 {
     border-radius: 15px;
 }
 
-
-
-
 .review-box {
     width: 500px;
     margin: 50px auto;
@@ -108,13 +94,11 @@ h1 {
     text-align: center;
 }
 
-
 .review-box label {
     display: block;
     font-size: 20px;
     margin-top: 15px;
 }
-
 
 .review-box input,
 .review-box textarea {
@@ -124,19 +108,16 @@ h1 {
     font-size: 16px;
 }
 
-
 .review-box textarea {
     height: 150px;
     resize: none;
 }
-
 
 .stars img {
     width: 40px;
     height: 40px;
     margin: 5px;
 }
-
 
 button {
     margin-top: 20px;
