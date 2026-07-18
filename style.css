@@ -124,3 +124,18 @@ button {
     border-radius: 10px;
     font-size: 18px;
 }
+
+
+
+.transcript {
+    width: 80%;
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid darkblue;
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    max-height: 300px;
+    overflow-y: auto;
+    text-align: left;
+}
