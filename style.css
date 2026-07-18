@@ -52,10 +52,6 @@ nav {
     text-decoration: none;
 }
 
-/* Hover effect on links */
-.dropdown a:hover {
-    background-color: blue;
-}
 
 /* Show menu when clicked */
 .menu.open .dropdown {
