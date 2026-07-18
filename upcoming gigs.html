@@ -33,5 +33,25 @@
 
 <link rel="stylesheet" href="style.css">
 
+<script>
+const menu = document.querySelector(".menu");
+const menuButton = document.querySelector(".menu > span");
+
+menuButton.addEventListener("click", function(event) {
+    event.stopPropagation();
+    menu.classList.toggle("open");
+});
+
+document.addEventListener("click", function() {
+    menu.classList.remove("open");
+});
+
+menu.addEventListener("click", function(event) {
+    event.stopPropagation();
+});
+</script>
+
+</body>
 
 
+</html>
