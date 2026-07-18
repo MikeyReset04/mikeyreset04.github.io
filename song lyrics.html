@@ -35,3 +35,30 @@
 
 
 <p> This page is for songs the members of the band have created - and the lyrics of said songs. </p>
+
+
+
+
+
+<script>
+const menu = document.querySelector(".menu");
+const menuButton = document.querySelector(".menu > span");
+
+menuButton.addEventListener("click", function(event) {
+    event.stopPropagation();
+    menu.classList.toggle("open");
+});
+
+document.addEventListener("click", function() {
+    menu.classList.remove("open");
+});
+
+menu.addEventListener("click", function(event) {
+    event.stopPropagation();
+});
+</script>
+    
+</body>
+
+</html>
+
