@@ -3,7 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Song Lyrics</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -20,36 +23,81 @@
             <div class="dropdown">
                 <a href="index.html">Home</a>
                 <a href="Meet Mikey.html">Meet Mikey</a>
-                <a href="upcoming gigs.html">Upcoming gigs and their locations</a>
+                <a href="upcoming gigs.html">
+                    Upcoming gigs and their locations
+                </a>
                 <a href="song-lyrics.html">Song Lyrics</a>
-                <a href="Recommendations.html">Song recommendations</a>
+                <a href="Recommendations.html">
+                    Song recommendations
+                </a>
             </div>
         </div>
     </nav>
 
 </header>
 
-<p>This page is for songs Mikey has created - and the lyrics of said songs.</p>
-
-
+<p>
+    This page is for songs Mikey has created and the lyrics of said songs.
+</p>
 
 <div class="song-section">
-    
-<h2>Listen to the song</h2>
 
-<audio controls>
-    <source src="Mikey Reset Bury Me.mp3" type="audio/mpeg">
-    Your browser does not support audio playback.
-</audio>
+    <h2>Listen to the song</h2>
 
+    <!-- The audio file is hidden because we are using custom controls -->
+    <audio id="song">
+        <source src="Mikey Reset Bury Me.mp3" type="audio/mpeg">
 
-<br>
-<br>
-<br>
-    
-<div class="transcript">
+        Your browser does not support audio playback.
+    </audio>
 
-    <h3>Transcript</h3>
+    <!-- Custom audio player -->
+    <div class="custom-audio-player">
+
+        <button
+            type="button"
+            id="playPauseButton"
+            class="audio-button"
+            aria-label="Play song"
+        >
+            ▶ Play
+        </button>
+
+        <span id="currentTime">0:00</span>
+
+        <input
+            type="range"
+            id="progressBar"
+            class="progress-bar"
+            min="0"
+            max="100"
+            value="0"
+            step="0.1"
+            aria-label="Song progress"
+        >
+
+        <span id="duration">0:00</span>
+
+        <label for="volumeControl" class="volume-label">
+            Volume
+        </label>
+
+        <input
+            type="range"
+            id="volumeControl"
+            class="volume-control"
+            min="0"
+            max="1"
+            value="1"
+            step="0.05"
+            aria-label="Volume"
+        >
+
+    </div>
+
+    <div class="transcript">
+
+        <h3>Transcript</h3>
 
 <pre>
 When you lose your mind
@@ -96,26 +144,157 @@ We'll be alright, we'll be just fine
 We'll be alright
 </pre>
 
+    </div>
+
 </div>
-</div>
-    
 
 <script>
-const menu = document.querySelector(".menu");
-const menuButton = document.querySelector(".menu > span");
+    /*
+     * Dropdown menu
+     */
 
-menuButton.addEventListener("click", function(event) {
-    event.stopPropagation();
-    menu.classList.toggle("open");
-});
+    const menu = document.querySelector(".menu");
+    const menuButton = document.querySelector(".menu > span");
 
-document.addEventListener("click", function() {
-    menu.classList.remove("open");
-});
+    menuButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+        menu.classList.toggle("open");
+    });
 
-menu.addEventListener("click", function(event) {
-    event.stopPropagation();
-});
+    document.addEventListener("click", function () {
+        menu.classList.remove("open");
+    });
+
+    menu.addEventListener("click", function (event) {
+        event.stopPropagation();
+    });
+
+
+    /*
+     * Custom audio player
+     */
+
+    const song = document.getElementById("song");
+    const playPauseButton = document.getElementById("playPauseButton");
+    const progressBar = document.getElementById("progressBar");
+    const currentTimeDisplay = document.getElementById("currentTime");
+    const durationDisplay = document.getElementById("duration");
+    const volumeControl = document.getElementById("volumeControl");
+
+
+    /*
+     * Converts seconds into minutes and seconds.
+     * For example, 75 seconds becomes 1:15.
+     */
+
+    function formatTime(seconds) {
+        if (!Number.isFinite(seconds)) {
+            return "0:00";
+        }
+
+        const minutes = Math.floor(seconds / 60);
+        const remainingSeconds = Math.floor(seconds % 60)
+            .toString()
+            .padStart(2, "0");
+
+        return minutes + ":" + remainingSeconds;
+    }
+
+
+    /*
+     * Play and pause button
+     */
+
+    playPauseButton.addEventListener("click", function () {
+        if (song.paused) {
+            song.play().catch(function (error) {
+                console.error("The song could not be played:", error);
+            });
+        } else {
+            song.pause();
+        }
+    });
+
+    song.addEventListener("play", function () {
+        playPauseButton.textContent = "❚❚ Pause";
+        playPauseButton.setAttribute("aria-label", "Pause song");
+    });
+
+    song.addEventListener("pause", function () {
+        playPauseButton.textContent = "▶ Play";
+        playPauseButton.setAttribute("aria-label", "Play song");
+    });
+
+
+    /*
+     * Display the song's total length
+     */
+
+    song.addEventListener("loadedmetadata", function () {
+        durationDisplay.textContent = formatTime(song.duration);
+    });
+
+
+    /*
+     * Update the progress bar while the song is playing
+     */
+
+    song.addEventListener("timeupdate", function () {
+        currentTimeDisplay.textContent = formatTime(song.currentTime);
+
+        if (Number.isFinite(song.duration) && song.duration > 0) {
+            progressBar.value =
+                (song.currentTime / song.duration) * 100;
+        }
+    });
+
+
+    /*
+     * Allow the listener to move to another part of the song
+     */
+
+    progressBar.addEventListener("input", function () {
+        if (Number.isFinite(song.duration) && song.duration > 0) {
+            song.currentTime =
+                (progressBar.value / 100) * song.duration;
+        }
+    });
+
+
+    /*
+     * Volume control
+     */
+
+    volumeControl.addEventListener("input", function () {
+        song.volume = volumeControl.value;
+    });
+
+
+    /*
+     * Reset the button when the song ends
+     */
+
+    song.addEventListener("ended", function () {
+        playPauseButton.textContent = "▶ Play";
+        playPauseButton.setAttribute("aria-label", "Play song");
+
+        progressBar.value = 0;
+        currentTimeDisplay.textContent = "0:00";
+    });
+
+
+    /*
+     * Display an error if the MP3 cannot be loaded
+     */
+
+    song.addEventListener("error", function () {
+        playPauseButton.disabled = true;
+        playPauseButton.textContent = "Audio unavailable";
+
+        console.error(
+            "The audio file could not be loaded. Check its filename and path."
+        );
+    });
 </script>
 
 </body>
