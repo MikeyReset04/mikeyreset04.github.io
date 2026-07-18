@@ -1,9 +1,8 @@
 <!doctype html>
 <html lang="en">
 
-
-
 <head>
+    <meta charset="UTF-8">
     <title>Song Lyrics</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -25,41 +24,12 @@
                 <a href="song-lyrics.html">Song Lyrics</a>
                 <a href="Recommendations.html">Song recommendations</a>
             </div>
-
         </div>
     </nav>
 
 </header>
 
-<link rel="stylesheet" href="style.css">
-
-
-<p> This page is for songs Mikey has created - and the lyrics of said songs. </p>
-
-
-
-
-
-<script>
-const menu = document.querySelector(".menu");
-const menuButton = document.querySelector(".menu > span");
-
-menuButton.addEventListener("click", function(event) {
-    event.stopPropagation();
-    menu.classList.toggle("open");
-});
-
-document.addEventListener("click", function() {
-    menu.classList.remove("open");
-});
-
-menu.addEventListener("click", function(event) {
-    event.stopPropagation();
-});
-</script>
-    
-</body>
-
+<p>This page is for songs Mikey has created - and the lyrics of said songs.</p>
 
 <h2>Listen to the song</h2>
 
@@ -68,9 +38,9 @@ menu.addEventListener("click", function(event) {
     Your browser does not support audio playback.
 </audio>
 
-
 <div class="transcript">
-<h3>Transcript</h3>
+
+    <h3>Transcript</h3>
 
 <pre>
 When you lose your mind
@@ -103,7 +73,6 @@ When the time is right, we'll close our eyes
 
 (instrumental)
 
-
 When you lose your mind, things'll never change
 Don't waste my time, I could suffocate
 When the time is right, we'll close our eyes
@@ -117,13 +86,26 @@ When the time is right, we'll close our eyes
 We'll be alright, we'll be just fine
 We'll be alright
 </pre>
+
 </div>
-    
 
+<script>
+const menu = document.querySelector(".menu");
+const menuButton = document.querySelector(".menu > span");
 
+menuButton.addEventListener("click", function(event) {
+    event.stopPropagation();
+    menu.classList.toggle("open");
+});
 
+document.addEventListener("click", function() {
+    menu.classList.remove("open");
+});
 
+menu.addEventListener("click", function(event) {
+    event.stopPropagation();
+});
+</script>
 
-    
+</body>
 </html>
-
