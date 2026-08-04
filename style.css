@@ -1,19 +1,63 @@
-```css
-body {
-    background-color: white;
-    color: maroon;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
+/* ========================================
+   GENERAL WEBSITE STYLING
+======================================== */
+
+* {
+    box-sizing: border-box;
 }
 
-/* Keeps title and menu on the same line */
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    color: maroon;
+
+    font-family: Arial, sans-serif;
+}
+
+main {
+    flex: 1;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: darkblue;
+}
+
+h1,
+h2,
+h3 {
+    margin-top: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+
+/* ========================================
+   HEADER AND NAVIGATION
+======================================== */
+
 header {
     display: flex;
     align-items: center;
+
+    width: 100%;
 }
 
-/* Moves menu to the right */
 nav {
     margin-left: auto;
 }
@@ -23,115 +67,203 @@ nav {
     display: inline-block;
 }
 
-/* Menu button */
-.menu span {
+.menu > span {
     display: inline-block;
+
+    padding: 12px 20px;
+
     background-color: darkblue;
     color: lightblue;
-    padding: 12px 20px;
-    cursor: pointer;
-    font-size: 18px;
+
     border-radius: 5px;
+
+    cursor: pointer;
     user-select: none;
+
+    font-size: 18px;
 }
 
-/* Dropdown box */
 .dropdown {
     display: none;
+
     position: absolute;
-    right: 0;
     top: 100%;
-    background-color: darkblue;
+    right: 0;
+
     min-width: 220px;
+
+    background-color: darkblue;
+
     border-radius: 5px;
+
+    overflow: hidden;
+
     z-index: 1000;
 }
 
-/* Dropdown links */
 .dropdown a {
     display: block;
-    color: lightblue;
+
     padding: 12px;
+
+    color: lightblue;
+
     text-decoration: none;
 }
 
-/* Dropdown link hover */
 .dropdown a:hover {
     background-color: navy;
 }
 
-/* Show menu when clicked */
 .menu.open .dropdown {
     display: block;
 }
 
-h1 {
-    margin: 0;
+
+/* ========================================
+   HOME PAGE
+======================================== */
+
+.content {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 50px;
+
+    width: 100%;
+
+    padding: 40px 20px;
 }
+
+.welcome-text {
+    width: 100%;
+    max-width: 350px;
+
+    font-size: 24px;
+    line-height: 1.5;
+
+    text-align: left;
+}
+
+.welcome-text h2 {
+    margin-bottom: 15px;
+}
+
+.mikey-photo {
+    display: block;
+
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+
+    border-radius: 15px;
+}
+
+
+/* ========================================
+   PHOTO GALLERY
+======================================== */
 
 .photo-table {
     width: 80%;
-    margin: auto;
+
+    margin: 30px auto;
+
     border-collapse: separate;
     border-spacing: 20px;
 }
 
 .photo-table td {
     width: 33%;
+
     text-align: center;
+    vertical-align: middle;
 }
 
 .photo-table img {
     width: 250px;
     height: 250px;
+
     object-fit: cover;
+
     border-radius: 15px;
 }
 
+
+/* ========================================
+   REVIEW AND RECOMMENDATION FORM
+======================================== */
+
 .review-box {
-    width: 500px;
+    width: 100%;
+    max-width: 500px;
+
     margin: 50px auto;
     padding: 30px;
+
     background-color: white;
+
+    border: 2px solid darkblue;
     border-radius: 15px;
+
     text-align: center;
-    box-sizing: border-box;
 }
 
 .review-box label {
     display: block;
-    font-size: 20px;
+
     margin-top: 15px;
+
+    font-size: 20px;
 }
 
 .review-box input,
 .review-box textarea {
     width: 90%;
-    padding: 10px;
+
     margin-top: 5px;
+    padding: 10px;
+
+    border: 1px solid darkblue;
+    border-radius: 5px;
+
+    font-family: Arial, sans-serif;
     font-size: 16px;
-    box-sizing: border-box;
 }
 
 .review-box textarea {
     height: 150px;
-    resize: none;
+
+    resize: vertical;
 }
 
 .stars img {
     width: 40px;
     height: 40px;
+
     margin: 5px;
 }
+
+
+/* ========================================
+   BUTTONS
+======================================== */
 
 button {
     margin-top: 20px;
     padding: 12px 30px;
+
     background-color: darkblue;
     color: lightblue;
+
     border: none;
     border-radius: 10px;
+
     font-size: 18px;
+
     cursor: pointer;
 }
 
@@ -139,20 +271,37 @@ button:hover {
     background-color: navy;
 }
 
+/* ========================================
+   SONG PAGE
+======================================== */
+
 .song-section {
-    width: 45%;
-    margin-left: 50px;
+    width: 100%;
+    max-width: 700px;
+
+    margin: 40px 0 40px 50px;
+
     text-align: left;
 }
 
-/* Audio player */
-audio {
-    display: block;
-    width: 100%;
-    max-width: 500px;
+.song-section h2 {
+    margin-bottom: 15px;
 }
 
-/* Transcript box */
+audio {
+    display: block;
+
+    width: 100%;
+    max-width: 500px;
+
+    margin-top: 15px;
+}
+
+
+/* ========================================
+   TRANSCRIPT BOX
+======================================== */
+
 .transcript {
     width: 500px;
     height: 300px;
@@ -163,42 +312,47 @@ audio {
     max-width: 1000px;
     max-height: 700px;
 
-    padding: 15px;
     margin-top: 30px;
+    padding: 15px;
+
+    background-color: #f5f5f5;
 
     border: 2px solid darkblue;
     border-radius: 10px;
-    background-color: #f5f5f5;
 
     overflow: auto;
     resize: both;
 
-    box-sizing: border-box;
     text-align: left;
 }
 
-/* Transcript text */
 .transcript p,
 .transcript pre {
     margin: 0;
+
     font-family: Arial, sans-serif;
     line-height: 1.5;
+
     white-space: pre-wrap;
     overflow-wrap: break-word;
 }
 
-/* Gig information section */
+
+/* ========================================
+   GIG INFORMATION
+======================================== */
+
 .gig-details {
     width: 90%;
     max-width: 1000px;
+
     margin: 40px auto 20px;
     padding: 20px;
+
     text-align: center;
-    box-sizing: border-box;
 }
 
 .gig-details h2 {
-    margin-top: 0;
     font-size: 30px;
 }
 
@@ -207,11 +361,17 @@ audio {
     line-height: 1.5;
 }
 
-/* Google Maps section */
+
+/* ========================================
+   GOOGLE MAPS SECTION
+======================================== */
+
 .gig-map-section {
     width: 90%;
     max-width: 1000px;
+
     margin: 20px auto 40px;
+
     text-align: center;
 }
 
@@ -219,26 +379,30 @@ audio {
     font-size: 28px;
 }
 
-/* Embedded Google Map */
 .gig-map-section iframe {
     display: block;
+
     width: 100%;
     height: 500px;
+
     margin-top: 20px;
+
     border: 3px solid darkblue !important;
     border-radius: 12px;
-    box-sizing: border-box;
 }
 
-/* Open in Google Maps link */
 .gig-map-section a {
     display: inline-block;
+
     margin-top: 15px;
     padding: 12px 20px;
+
     background-color: darkblue;
     color: lightblue;
-    text-decoration: none;
+
     border-radius: 8px;
+
+    text-decoration: none;
     font-size: 18px;
 }
 
@@ -246,8 +410,53 @@ audio {
     background-color: navy;
 }
 
-/* Mobile layout */
-@media screen and (max-width: 600px) {
+
+/* ========================================
+   SOCIAL MEDIA FOOTER
+======================================== */
+
+.social-footer {
+    width: 100%;
+
+    margin-top: auto;
+    padding: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+
+    background-color: darkblue;
+}
+
+.social-footer a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-footer img {
+    display: block;
+
+    width: 45px;
+    height: 45px;
+
+    object-fit: contain;
+
+    transition: transform 0.2s ease;
+}
+
+.social-footer img:hover {
+    transform: scale(1.15);
+}
+
+
+/* ========================================
+   MOBILE AND TABLET LAYOUT
+======================================== */
+
+@media screen and (max-width: 800px) {
+
     body {
         padding: 12px;
     }
@@ -261,8 +470,9 @@ audio {
         font-size: 26px;
     }
 
-    .menu span {
+    .menu > span {
         padding: 10px 14px;
+
         font-size: 16px;
     }
 
@@ -270,26 +480,66 @@ audio {
         min-width: 180px;
     }
 
+    .content {
+        flex-direction: column;
+
+        gap: 30px;
+
+        padding: 40px 10px;
+
+        text-align: center;
+    }
+
+    .welcome-text {
+        max-width: 600px;
+
+        font-size: 20px;
+
+        text-align: center;
+    }
+
+    .mikey-photo {
+        max-width: 100%;
+    }
+
     .photo-table {
         width: 100%;
+
         border-spacing: 10px;
+    }
+
+    .photo-table td {
+        display: block;
+
+        width: 100%;
+
+        padding-bottom: 15px;
     }
 
     .photo-table img {
         width: 100%;
         height: auto;
+
         max-width: 250px;
     }
 
     .review-box {
         width: 100%;
+
         margin: 30px auto;
         padding: 20px;
     }
 
+    .review-box input,
+    .review-box textarea {
+        width: 100%;
+    }
+
     .song-section {
         width: 100%;
-        margin-left: 0;
+        max-width: none;
+
+        margin: 30px 0;
     }
 
     audio {
@@ -306,10 +556,6 @@ audio {
 
         margin-top: 30px;
 
-        /*
-        Horizontal resizing is disabled on small screens
-        so the box cannot extend beyond the phone screen.
-        */
         resize: vertical;
     }
 
@@ -334,49 +580,62 @@ audio {
 
     .gig-map-section iframe {
         height: 350px;
+
         border-width: 2px !important;
     }
 
     .gig-map-section a {
-        font-size: 16px;
         padding: 10px 16px;
+
+        font-size: 16px;
+    }
+
+    .social-footer {
+        gap: 15px;
+
+        padding: 15px;
+    }
+
+    .social-footer img {
+        width: 36px;
+        height: 36px;
     }
 }
 
 
+/* ========================================
+   SMALL PHONE LAYOUT
+======================================== */
 
+@media screen and (max-width: 450px) {
 
-/* Keeps the footer at the bottom of the window */
-html {
-    height: 100%;
-}
+    header {
+        flex-wrap: wrap;
+    }
 
-body {
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-}
+    nav {
+        width: 100%;
 
-/* Pushes the footer to the bottom */
-.social-footer {
-    margin-top: auto;
+        margin-top: 10px;
+        margin-left: 0;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
+        text-align: right;
+    }
 
-    padding: 20px;
+    .dropdown {
+        width: 100%;
+        min-width: 0;
+    }
 
-    background-color: darkblue;
-}
+    .welcome-text {
+        font-size: 18px;
+    }
 
-.social-footer img {
-    width: 45px;
-    height: 45px;
-    transition: transform 0.2s;
-}
+    .gig-map-section iframe {
+        height: 300px;
+    }
 
-.social-footer img:hover {
-    transform: scale(1.15);
+    .social-footer {
+        flex-wrap: wrap;
+    }
 }
