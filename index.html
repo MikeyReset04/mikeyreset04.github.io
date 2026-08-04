@@ -1,34 +1,91 @@
+```html
 <!doctype html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
     <title>Home!</title>
+
     <link rel="stylesheet" href="style.css">
 
     <style>
+        /*
+            This section fills the available space between
+            the header and the social-media footer.
+        */
         .content {
+            flex: 1;
+
             display: flex;
             align-items: center;
             justify-content: center;
+
             gap: 50px;
-            height: 70vh;
+
+            width: 100%;
+            padding: 40px 20px;
         }
 
         .welcome-text {
+            width: 100%;
             max-width: 350px;
+
             font-size: 24px;
             line-height: 1.5;
+
             text-align: left;
         }
 
         .welcome-text h2 {
+            margin-top: 0;
             margin-bottom: 15px;
         }
 
-        .content img {
-            width: 500px;
+        /*
+            This only changes Mikey's main photograph.
+            It does not affect the social-media icons.
+        */
+        .mikey-photo {
+            display: block;
+
+            width: 100%;
+            max-width: 500px;
             height: auto;
+
+            border-radius: 15px;
+        }
+
+        /*
+            Changes the layout for smaller screens.
+        */
+        @media screen and (max-width: 800px) {
+            .content {
+                flex-direction: column;
+
+                gap: 30px;
+
+                padding: 40px 10px;
+
+                text-align: center;
+            }
+
+            .welcome-text {
+                max-width: 600px;
+
+                font-size: 20px;
+
+                text-align: center;
+            }
+
+            .mikey-photo {
+                max-width: 100%;
+            }
         }
     </style>
 </head>
@@ -41,14 +98,27 @@
 
     <nav>
         <div class="menu">
+
             <span>Menu ▼</span>
 
             <div class="dropdown">
                 <a href="index.html">Home</a>
-                <a href="Meet Mikey.html">Meet Mikey</a>
-                <a href="upcoming gigs.html">Upcoming gigs and their locations</a>
-                <a href="song-lyrics.html">Song Lyrics</a>
-                <a href="Recommendations.html">Song recommendations</a>
+
+                <a href="Meet Mikey.html">
+                    Meet Mikey
+                </a>
+
+                <a href="upcoming gigs.html">
+                    Upcoming gigs and their locations
+                </a>
+
+                <a href="song-lyrics.html">
+                    Song Lyrics
+                </a>
+
+                <a href="Recommendations.html">
+                    Song recommendations
+                </a>
             </div>
 
         </div>
@@ -56,75 +126,92 @@
 
 </header>
 
-<div class="content">
+
+<main class="content">
 
     <div class="welcome-text">
+
         <h2>Welcome!</h2>
+
         <p>
-            Welcome to the official website of <strong>Mikey Reset!</strong>
-            The pages on this site have information about his upcoming gigs,
-            his song lyrics and more! Check it out!
+            Welcome to the official website of
+            <strong>Mikey Reset!</strong>
+
+            The pages on this site have information about his
+            upcoming gigs, his song lyrics and more! Check it out!
         </p>
+
     </div>
 
-    <img src="Mikey Photo1.jpeg"
-         alt="Mikey Photo1">
+    <img
+        class="mikey-photo"
+        src="Mikey Photo1.jpeg"
+        alt="Mikey Reset"
+    >
 
-</div>
+</main>
 
-<script>
-const menu = document.querySelector(".menu");
-const menuButton = document.querySelector(".menu > span");
 
-menuButton.addEventListener("click", function(event) {
-    event.stopPropagation();
-    menu.classList.toggle("open");
-});
-
-document.addEventListener("click", function() {
-    menu.classList.remove("open");
-});
-
-menu.addEventListener("click", function(event) {
-    event.stopPropagation();
-});
-</script>
-
-<br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    
 <footer class="social-footer">
 
-    <a href="https://www.instagram.com/mikeyreset04" target="_blank" rel="noopener noreferrer">
+    <a
+        href="https://www.instagram.com/mikeyreset04"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit Mikey Reset on Instagram"
+    >
         <img src="instagram.png" alt="Instagram">
     </a>
 
-    <a href="https://www.youtube.com/@mikeyreset04" target="_blank" rel="noopener noreferrer">
+    <a
+        href="https://www.youtube.com/@mikeyreset04"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit Mikey Reset on YouTube"
+    >
         <img src="youtube.png" alt="YouTube">
     </a>
 
-    <a href="https://www.tiktok.com/@mikeyreset04" target="_blank" rel="noopener noreferrer">
+    <a
+        href="https://www.tiktok.com/@mikeyreset04"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit Mikey Reset on TikTok"
+    >
         <img src="tiktok.png" alt="TikTok">
     </a>
 
-    <a href="https://www.facebook.com/groups/671759038532046" target="_blank" rel="noopener noreferrer">
+    <a
+        href="https://www.facebook.com/groups/671759038532046"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Visit Mikey Reset on Facebook"
+    >
         <img src="facebook.png" alt="Facebook">
     </a>
 
 </footer>
 
-    
+
+<script>
+    const menu = document.querySelector(".menu");
+    const menuButton = document.querySelector(".menu > span");
+
+    menuButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+        menu.classList.toggle("open");
+    });
+
+    document.addEventListener("click", function () {
+        menu.classList.remove("open");
+    });
+
+    menu.addEventListener("click", function (event) {
+        event.stopPropagation();
+    });
+</script>
+
 </body>
 
 </html>
+```
