@@ -1,7 +1,10 @@
+```css
 body {
     background-color: white;
     color: maroon;
     font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
 }
 
 /* Keeps title and menu on the same line */
@@ -50,6 +53,11 @@ nav {
     color: lightblue;
     padding: 12px;
     text-decoration: none;
+}
+
+/* Dropdown link hover */
+.dropdown a:hover {
+    background-color: navy;
 }
 
 /* Show menu when clicked */
@@ -124,6 +132,11 @@ button {
     border: none;
     border-radius: 10px;
     font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: navy;
 }
 
 .song-section {
@@ -174,11 +187,78 @@ audio {
     overflow-wrap: break-word;
 }
 
+/* Gig information section */
+.gig-details {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto 20px;
+    padding: 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.gig-details h2 {
+    margin-top: 0;
+    font-size: 30px;
+}
+
+.gig-details p {
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+/* Google Maps section */
+.gig-map-section {
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto 40px;
+    text-align: center;
+}
+
+.gig-map-section h2 {
+    font-size: 28px;
+}
+
+/* Embedded Google Map */
+.gig-map-section iframe {
+    display: block;
+    width: 100%;
+    height: 500px;
+    margin-top: 20px;
+    border: 3px solid darkblue !important;
+    border-radius: 12px;
+    box-sizing: border-box;
+}
+
+/* Open in Google Maps link */
+.gig-map-section a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background-color: darkblue;
+    color: lightblue;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+.gig-map-section a:hover {
+    background-color: navy;
+}
+
 /* Mobile layout */
 @media screen and (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
     header {
         align-items: flex-start;
         gap: 10px;
+    }
+
+    h1 {
+        font-size: 26px;
     }
 
     .menu span {
@@ -232,32 +312,34 @@ audio {
         */
         resize: vertical;
     }
+
+    .gig-details,
+    .gig-map-section {
+        width: 100%;
+    }
+
+    .gig-details {
+        margin-top: 30px;
+        padding: 10px;
+    }
+
+    .gig-details h2,
+    .gig-map-section h2 {
+        font-size: 24px;
+    }
+
+    .gig-details p {
+        font-size: 18px;
+    }
+
+    .gig-map-section iframe {
+        height: 350px;
+        border-width: 2px !important;
+    }
+
+    .gig-map-section a {
+        font-size: 16px;
+        padding: 10px 16px;
+    }
 }
-
-
-
-
-
-
-.gig-map-section {
-    width: 90%;
-    max-width: 1100px;
-    margin: 40px auto;
-    text-align: center;
-}
-
-#gig-map {
-    width: 100%;
-    height: 500px;
-    border: 3px solid darkblue;
-    border-radius: 12px;
-    margin-top: 20px;
-}
-
-
-
-
-
-
-
-
+```
