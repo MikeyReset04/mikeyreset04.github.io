@@ -51,7 +51,12 @@
         Your browser does not support audio playback.
     </audio>
 
-    <p> NOTE: The volume/seek bar sliders do not work on mobile browsers. If you would like to change the volume, please do so on your mobile phone controls rather than this web page</p>
+    <p>
+        NOTE: The volume/seek bar sliders do not work on mobile browsers.
+        If you would like to change the volume, please do so on your mobile
+        phone controls rather than this web page.
+    </p>
+
     <!-- Custom audio player -->
     <div class="custom-audio-player">
 
@@ -80,7 +85,7 @@
         <span id="duration">0:00</span>
 
         <label for="volumeControl" class="volume-label">
-            Volume
+            Volume: <span id="volumeNumber">100%</span>
         </label>
 
         <input
@@ -181,6 +186,7 @@ We'll be alright
     const currentTimeDisplay = document.getElementById("currentTime");
     const durationDisplay = document.getElementById("duration");
     const volumeControl = document.getElementById("volumeControl");
+    const volumeNumber = document.getElementById("volumeNumber");
 
 
     /*
@@ -267,7 +273,12 @@ We'll be alright
      */
 
     volumeControl.addEventListener("input", function () {
-        song.volume = volumeControl.value;
+        const newVolume = Number(volumeControl.value);
+
+        song.volume = newVolume;
+
+        volumeNumber.textContent =
+            Math.round(newVolume * 100) + "%";
     });
 
 
@@ -297,6 +308,7 @@ We'll be alright
         );
     });
 </script>
+
 <footer class="social-footer">
 
     <a
