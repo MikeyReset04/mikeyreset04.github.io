@@ -3,7 +3,7 @@
 
 <head>
 
-    <title>Recommendations</title>
+    <title>Requests</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -19,7 +19,7 @@
 
 <header>
 
-    <h1>Leave a recommendation! 🤘</h1>
+    <h1>Leave a Request! 🤘</h1>
 
 
     <nav>
@@ -34,7 +34,7 @@
                 <a href="Meet Mikey.html">Meet Mikey</a>
                 <a href="upcoming gigs.html">Upcoming gigs and their locations</a>
                 <a href="song-lyrics.html">Song Lyrics</a>
-                <a href="Recommendations.html">Song recommendations</a>
+                <a href="Requests.html">Song Requests</a>
             </div>
 
         </div>
@@ -57,7 +57,7 @@
 
 
 
-    <form id="recommendation-form">
+    <form id="Request-form">
 
 
 
@@ -81,18 +81,18 @@
 
 
 
-        <label>Your Recommendation:</label>
+        <label>Your Request:</label>
 
         <textarea
-            id="recommendation"
-            placeholder="Write your recommendation here..."
+            id="Request"
+            placeholder="Write your Request here..."
             required></textarea>
 
 
 
         <button type="submit">
 
-            Submit Recommendation 🤘
+            Submit Request 🤘
 
         </button>
 
@@ -115,39 +115,39 @@ emailjs.init({
 });
 
 
-document.getElementById("recommendation-form").addEventListener("submit", function(event) {
+document.getElementById("Request-form").addEventListener("submit", function(event) {
 
     event.preventDefault();
 
 
-    let recommendationData = {
+    let RequestData = {
 
         name: document.getElementById("name").value,
 
         social_name: document.getElementById("social_name").value,
 
-        recommendation: document.getElementById("recommendation").value
+        Request: document.getElementById("Request").value
 
     };
 
 
-    console.log("Data being sent:", recommendationData);
+    console.log("Data being sent:", RequestData);
 
 
 
     emailjs.send(
         "service_4u514ef",
         "template_zye3d0d",
-        recommendationData
+        RequestData
     )
 
     .then(function(response) {
 
         console.log("SUCCESS:", response);
 
-        alert("Thank you for your recommendation 🤘");
+        alert("Thank you for your Request 🤘");
 
-        document.getElementById("recommendation-form").reset();
+        document.getElementById("Request-form").reset();
 
     })
 
